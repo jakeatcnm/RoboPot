@@ -1,4 +1,4 @@
-/*
+s/*
  * Grove_Air_Quality_Sensor.ino
  * Demo for Grove - Air Quality Sensor.
  *
