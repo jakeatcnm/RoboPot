@@ -178,6 +178,12 @@ void loop() {
   Serial.println(moisture);
   int moisturePercent = moisture / 17;
   Serial.println(moisturePercent);
+
+  if (moisturePercent < 20){
+    digitalWrite(PUMPPIN, HIGH);
+    delay(500);
+    digitalWrite(PUMPPIN, LOW);
+  }
     
   Serial.printf("Moisture: %i\n", moisturePercent);
   tempC = bme.readTemperature();
@@ -203,11 +209,7 @@ void loop() {
     starttime = millis();
   }
 
-  if (moisturePercent < 20){
-    digitalWrite(MOISTUREPIN, HIGH);
-    delay(500);
-    digitalWrite(MOISTUREPIN, LOW);
-  }
+
 
   airQuality=airQualitySensor.slope();
   if (airQuality >= 0)// if a valid data returned.

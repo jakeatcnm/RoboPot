@@ -784,210 +784,210 @@ inline system_tick_t millis(void) { return HAL_Timer_Get_Milli_Seconds(); }
         n += println();
    d447a:	4628      	mov	r0, r5
    d447c:	f002 fdcb 	bl	d7016 <_ZN5Print7printlnEv>
+  if (moisturePercent < 20){
+   d4480:	2c13      	cmp	r4, #19
+   d4482:	dc0b      	bgt.n	d449c <loop+0x134>
+    digitalWrite(PUMPPIN, HIGH);
+   d4484:	2101      	movs	r1, #1
+   d4486:	2007      	movs	r0, #7
+   d4488:	f003 fdfd 	bl	d8086 <digitalWrite>
+    delay(500);
+   d448c:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+   d4490:	f002 ff4a 	bl	d7328 <delay>
+    digitalWrite(PUMPPIN, LOW);
+   d4494:	2100      	movs	r1, #0
+   d4496:	2007      	movs	r0, #7
+   d4498:	f003 fdf5 	bl	d8086 <digitalWrite>
   Serial.printf("Moisture: %i\n", moisturePercent);
-   d4480:	f003 f8e8 	bl	d7654 <_Z16_fetch_usbserialv>
-   d4484:	4622      	mov	r2, r4
-   d4486:	49b7      	ldr	r1, [pc, #732]	; (d4764 <loop+0x3fc>)
+   d449c:	f003 f8da 	bl	d7654 <_Z16_fetch_usbserialv>
+   d44a0:	4622      	mov	r2, r4
+   d44a2:	49b0      	ldr	r1, [pc, #704]	; (d4764 <loop+0x3fc>)
   tempF = convertToFarenheit(tempC);
-   d4488:	4fb7      	ldr	r7, [pc, #732]	; (d4768 <loop+0x400>)
+   d44a4:	4fb0      	ldr	r7, [pc, #704]	; (d4768 <loop+0x400>)
   pressIH = convertToInHg(pressPA);
-   d448a:	4eb8      	ldr	r6, [pc, #736]	; (d476c <loop+0x404>)
+   d44a6:	4eb1      	ldr	r6, [pc, #708]	; (d476c <loop+0x404>)
   humidRH = bme.readHumidity();
-   d448c:	f8df 8344 	ldr.w	r8, [pc, #836]	; d47d4 <loop+0x46c>
+   d44a8:	f8df 8328 	ldr.w	r8, [pc, #808]	; d47d4 <loop+0x46c>
   lowpulseoccupancy = lowpulseoccupancy+duration;
-   d4490:	4db7      	ldr	r5, [pc, #732]	; (d4770 <loop+0x408>)
+   d44ac:	4db0      	ldr	r5, [pc, #704]	; (d4770 <loop+0x408>)
   if ((millis()-starttime) > sampletime_ms)//if the sampel time == 30s
-   d4492:	f8df b344 	ldr.w	fp, [pc, #836]	; d47d8 <loop+0x470>
+   d44ae:	f8df b328 	ldr.w	fp, [pc, #808]	; d47d8 <loop+0x470>
   Serial.printf("Moisture: %i\n", moisturePercent);
-   d4496:	f7ff fe3b 	bl	d4110 <_ZN5Print6printfEPKcz>
+   d44b2:	f7ff fe2d 	bl	d4110 <_ZN5Print6printfEPKcz>
   tempC = bme.readTemperature();
-   d449a:	48b6      	ldr	r0, [pc, #728]	; (d4774 <loop+0x40c>)
-   d449c:	f001 fcbc 	bl	d5e18 <_ZN15Adafruit_BME28015readTemperatureEv>
-   d44a0:	4bb5      	ldr	r3, [pc, #724]	; (d4778 <loop+0x410>)
-   d44a2:	ee10 0a10 	vmov	r0, s0
-   d44a6:	ed83 0a00 	vstr	s0, [r3]
+   d44b6:	48af      	ldr	r0, [pc, #700]	; (d4774 <loop+0x40c>)
+   d44b8:	f001 fcae 	bl	d5e18 <_ZN15Adafruit_BME28015readTemperatureEv>
+   d44bc:	4bae      	ldr	r3, [pc, #696]	; (d4778 <loop+0x410>)
+   d44be:	ee10 0a10 	vmov	r0, s0
+   d44c2:	ed83 0a00 	vstr	s0, [r3]
 
 float convertToFarenheit(float celsius){
   float farenheit = (celsius * 1.8) + 32;
-   d44aa:	f005 fab3 	bl	d9a14 <__aeabi_f2d>
-   d44ae:	a39e      	add	r3, pc, #632	; (adr r3, d4728 <loop+0x3c0>)
-   d44b0:	e9d3 2300 	ldrd	r2, r3, [r3]
-   d44b4:	f005 fb06 	bl	d9ac4 <__aeabi_dmul>
-   d44b8:	2200      	movs	r2, #0
-   d44ba:	4bb0      	ldr	r3, [pc, #704]	; (d477c <loop+0x414>)
-   d44bc:	f005 f94c 	bl	d9758 <__adddf3>
-   d44c0:	f005 fdf8 	bl	da0b4 <__aeabi_d2f>
-   d44c4:	6038      	str	r0, [r7, #0]
+   d44c6:	f005 faa5 	bl	d9a14 <__aeabi_f2d>
+   d44ca:	a397      	add	r3, pc, #604	; (adr r3, d4728 <loop+0x3c0>)
+   d44cc:	e9d3 2300 	ldrd	r2, r3, [r3]
+   d44d0:	f005 faf8 	bl	d9ac4 <__aeabi_dmul>
+   d44d4:	2200      	movs	r2, #0
+   d44d6:	4ba9      	ldr	r3, [pc, #676]	; (d477c <loop+0x414>)
+   d44d8:	f005 f93e 	bl	d9758 <__adddf3>
+   d44dc:	f005 fdea 	bl	da0b4 <__aeabi_d2f>
+   d44e0:	6038      	str	r0, [r7, #0]
   pressPA = bme.readPressure();
-   d44c6:	48ab      	ldr	r0, [pc, #684]	; (d4774 <loop+0x40c>)
-   d44c8:	f001 fcd4 	bl	d5e74 <_ZN15Adafruit_BME28012readPressureEv>
-   d44cc:	4bac      	ldr	r3, [pc, #688]	; (d4780 <loop+0x418>)
-   d44ce:	ee10 0a10 	vmov	r0, s0
-   d44d2:	ed83 0a00 	vstr	s0, [r3]
+   d44e2:	48a4      	ldr	r0, [pc, #656]	; (d4774 <loop+0x40c>)
+   d44e4:	f001 fcc6 	bl	d5e74 <_ZN15Adafruit_BME28012readPressureEv>
+   d44e8:	4ba5      	ldr	r3, [pc, #660]	; (d4780 <loop+0x418>)
+   d44ea:	ee10 0a10 	vmov	r0, s0
+   d44ee:	ed83 0a00 	vstr	s0, [r3]
   return farenheit;
 }
 
 float convertToInHg( float pascals){
   float mercury = pascals / 3386.389;
-   d44d6:	f005 fa9d 	bl	d9a14 <__aeabi_f2d>
-   d44da:	a395      	add	r3, pc, #596	; (adr r3, d4730 <loop+0x3c8>)
-   d44dc:	e9d3 2300 	ldrd	r2, r3, [r3]
-   d44e0:	f005 fc1a 	bl	d9d18 <__aeabi_ddiv>
-   d44e4:	f005 fde6 	bl	da0b4 <__aeabi_d2f>
-   d44e8:	6030      	str	r0, [r6, #0]
+   d44f2:	f005 fa8f 	bl	d9a14 <__aeabi_f2d>
+   d44f6:	a38e      	add	r3, pc, #568	; (adr r3, d4730 <loop+0x3c8>)
+   d44f8:	e9d3 2300 	ldrd	r2, r3, [r3]
+   d44fc:	f005 fc0c 	bl	d9d18 <__aeabi_ddiv>
+   d4500:	f005 fdd8 	bl	da0b4 <__aeabi_d2f>
+   d4504:	6030      	str	r0, [r6, #0]
   humidRH = bme.readHumidity();
-   d44ea:	48a2      	ldr	r0, [pc, #648]	; (d4774 <loop+0x40c>)
-   d44ec:	f001 fe04 	bl	d60f8 <_ZN15Adafruit_BME28012readHumidityEv>
+   d4506:	489b      	ldr	r0, [pc, #620]	; (d4774 <loop+0x40c>)
+   d4508:	f001 fdf6 	bl	d60f8 <_ZN15Adafruit_BME28012readHumidityEv>
   duration = pulseIn(DUSTPIN, LOW);
-   d44f0:	2100      	movs	r1, #0
-   d44f2:	2010      	movs	r0, #16
+   d450c:	2100      	movs	r1, #0
+   d450e:	2010      	movs	r0, #16
   humidRH = bme.readHumidity();
-   d44f4:	ed88 0a00 	vstr	s0, [r8]
+   d4510:	ed88 0a00 	vstr	s0, [r8]
   duration = pulseIn(DUSTPIN, LOW);
-   d44f8:	f003 fe2b 	bl	d8152 <pulseIn>
-   d44fc:	4ba1      	ldr	r3, [pc, #644]	; (d4784 <loop+0x41c>)
-   d44fe:	6018      	str	r0, [r3, #0]
+   d4514:	f003 fe1d 	bl	d8152 <pulseIn>
+   d4518:	4b9a      	ldr	r3, [pc, #616]	; (d4784 <loop+0x41c>)
+   d451a:	6018      	str	r0, [r3, #0]
   lowpulseoccupancy = lowpulseoccupancy+duration;
-   d4500:	682b      	ldr	r3, [r5, #0]
-   d4502:	4418      	add	r0, r3
-   d4504:	6028      	str	r0, [r5, #0]
-   d4506:	f002 f8b3 	bl	d6670 <HAL_Timer_Get_Milli_Seconds>
+   d451c:	682b      	ldr	r3, [r5, #0]
+   d451e:	4418      	add	r0, r3
+   d4520:	6028      	str	r0, [r5, #0]
+   d4522:	f002 f8a5 	bl	d6670 <HAL_Timer_Get_Milli_Seconds>
   if ((millis()-starttime) > sampletime_ms)//if the sampel time == 30s
-   d450a:	4b9f      	ldr	r3, [pc, #636]	; (d4788 <loop+0x420>)
-   d450c:	f8cd 800c 	str.w	r8, [sp, #12]
-   d4510:	f8d3 a000 	ldr.w	sl, [r3]
-   d4514:	f8db 3000 	ldr.w	r3, [fp]
-   d4518:	1ac0      	subs	r0, r0, r3
-   d451a:	4550      	cmp	r0, sl
-   d451c:	e9cd 7601 	strd	r7, r6, [sp, #4]
-   d4520:	f240 808d 	bls.w	d463e <loop+0x2d6>
+   d4526:	4b98      	ldr	r3, [pc, #608]	; (d4788 <loop+0x420>)
+   d4528:	f8cd 800c 	str.w	r8, [sp, #12]
+   d452c:	f8d3 a000 	ldr.w	sl, [r3]
+   d4530:	f8db 3000 	ldr.w	r3, [fp]
+   d4534:	1ac0      	subs	r0, r0, r3
+   d4536:	4550      	cmp	r0, sl
+   d4538:	e9cd 7601 	strd	r7, r6, [sp, #4]
+   d453c:	f240 808d 	bls.w	d465a <loop+0x2f2>
     ratio = lowpulseoccupancy/(sampletime_ms*10.0);  // Integer percentage 0=>100
-   d4524:	6828      	ldr	r0, [r5, #0]
-   d4526:	4e99      	ldr	r6, [pc, #612]	; (d478c <loop+0x424>)
-   d4528:	f005 fa52 	bl	d99d0 <__aeabi_ui2d>
-   d452c:	4680      	mov	r8, r0
-   d452e:	4650      	mov	r0, sl
-   d4530:	4689      	mov	r9, r1
-   d4532:	f005 fa4d 	bl	d99d0 <__aeabi_ui2d>
-   d4536:	4b96      	ldr	r3, [pc, #600]	; (d4790 <loop+0x428>)
-   d4538:	2200      	movs	r2, #0
-   d453a:	f005 fac3 	bl	d9ac4 <__aeabi_dmul>
-   d453e:	4602      	mov	r2, r0
-   d4540:	460b      	mov	r3, r1
-   d4542:	4640      	mov	r0, r8
-   d4544:	4649      	mov	r1, r9
-   d4546:	f005 fbe7 	bl	d9d18 <__aeabi_ddiv>
-   d454a:	f005 fdb3 	bl	da0b4 <__aeabi_d2f>
-   d454e:	6030      	str	r0, [r6, #0]
+   d4540:	6828      	ldr	r0, [r5, #0]
+   d4542:	4e92      	ldr	r6, [pc, #584]	; (d478c <loop+0x424>)
+   d4544:	f005 fa44 	bl	d99d0 <__aeabi_ui2d>
+   d4548:	4680      	mov	r8, r0
+   d454a:	4650      	mov	r0, sl
+   d454c:	4689      	mov	r9, r1
+   d454e:	f005 fa3f 	bl	d99d0 <__aeabi_ui2d>
+   d4552:	4b8f      	ldr	r3, [pc, #572]	; (d4790 <loop+0x428>)
+   d4554:	2200      	movs	r2, #0
+   d4556:	f005 fab5 	bl	d9ac4 <__aeabi_dmul>
+   d455a:	4602      	mov	r2, r0
+   d455c:	460b      	mov	r3, r1
+   d455e:	4640      	mov	r0, r8
+   d4560:	4649      	mov	r1, r9
+   d4562:	f005 fbd9 	bl	d9d18 <__aeabi_ddiv>
+   d4566:	f005 fda5 	bl	da0b4 <__aeabi_d2f>
+   d456a:	6030      	str	r0, [r6, #0]
     Serial.printf("Ratio: %i", ratio);
-   d4550:	f003 f880 	bl	d7654 <_Z16_fetch_usbserialv>
-   d4554:	4607      	mov	r7, r0
-   d4556:	6830      	ldr	r0, [r6, #0]
-   d4558:	f005 fa5c 	bl	d9a14 <__aeabi_f2d>
-   d455c:	4602      	mov	r2, r0
-   d455e:	460b      	mov	r3, r1
-   d4560:	4638      	mov	r0, r7
-   d4562:	498c      	ldr	r1, [pc, #560]	; (d4794 <loop+0x42c>)
+   d456c:	f003 f872 	bl	d7654 <_Z16_fetch_usbserialv>
+   d4570:	4607      	mov	r7, r0
+   d4572:	6830      	ldr	r0, [r6, #0]
+   d4574:	f005 fa4e 	bl	d9a14 <__aeabi_f2d>
+   d4578:	4602      	mov	r2, r0
+   d457a:	460b      	mov	r3, r1
+   d457c:	4638      	mov	r0, r7
+   d457e:	4985      	ldr	r1, [pc, #532]	; (d4794 <loop+0x42c>)
     dustConcentration = 1.1*pow(ratio,3)-3.8*pow(ratio,2)+520*ratio+0.62; // using spec sheet curve
-   d4564:	4f8c      	ldr	r7, [pc, #560]	; (d4798 <loop+0x430>)
+   d4580:	4f85      	ldr	r7, [pc, #532]	; (d4798 <loop+0x430>)
     Serial.printf("Ratio: %i", ratio);
-   d4566:	f7ff fdd3 	bl	d4110 <_ZN5Print6printfEPKcz>
+   d4582:	f7ff fdc5 	bl	d4110 <_ZN5Print6printfEPKcz>
     inline _GLIBCXX_CONSTEXPR
     typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
     pow(_Tp __x, _Up __y)
     {
       typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
       return pow(__type(__x), __type(__y));
-   d456a:	6830      	ldr	r0, [r6, #0]
-   d456c:	f005 fa52 	bl	d9a14 <__aeabi_f2d>
-   d4570:	ed9f 1b71 	vldr	d1, [pc, #452]	; d4738 <loop+0x3d0>
-   d4574:	ec41 0b10 	vmov	d0, r0, r1
-   d4578:	f003 ff4a 	bl	d8410 <pow>
-    dustConcentration = 1.1*pow(ratio,3)-3.8*pow(ratio,2)+520*ratio+0.62; // using spec sheet curve
-   d457c:	ed96 8a00 	vldr	s16, [r6]
-   d4580:	ee18 0a10 	vmov	r0, s16
-   d4584:	ec59 8b10 	vmov	r8, r9, d0
+   d4586:	6830      	ldr	r0, [r6, #0]
    d4588:	f005 fa44 	bl	d9a14 <__aeabi_f2d>
-   d458c:	a36c      	add	r3, pc, #432	; (adr r3, d4740 <loop+0x3d8>)
-   d458e:	e9d3 2300 	ldrd	r2, r3, [r3]
-   d4592:	ec41 0b19 	vmov	d9, r0, r1
-   d4596:	4640      	mov	r0, r8
-   d4598:	4649      	mov	r1, r9
-   d459a:	f005 fa93 	bl	d9ac4 <__aeabi_dmul>
-   d459e:	ec53 2b19 	vmov	r2, r3, d9
-   d45a2:	4680      	mov	r8, r0
-   d45a4:	4689      	mov	r9, r1
-   d45a6:	ee19 0a10 	vmov	r0, s18
-   d45aa:	4619      	mov	r1, r3
-   d45ac:	f005 fa8a 	bl	d9ac4 <__aeabi_dmul>
-   d45b0:	a365      	add	r3, pc, #404	; (adr r3, d4748 <loop+0x3e0>)
-   d45b2:	e9d3 2300 	ldrd	r2, r3, [r3]
+   d458c:	ed9f 1b6a 	vldr	d1, [pc, #424]	; d4738 <loop+0x3d0>
+   d4590:	ec41 0b10 	vmov	d0, r0, r1
+   d4594:	f003 ff3c 	bl	d8410 <pow>
+    dustConcentration = 1.1*pow(ratio,3)-3.8*pow(ratio,2)+520*ratio+0.62; // using spec sheet curve
+   d4598:	ed96 8a00 	vldr	s16, [r6]
+   d459c:	ee18 0a10 	vmov	r0, s16
+   d45a0:	ec59 8b10 	vmov	r8, r9, d0
+   d45a4:	f005 fa36 	bl	d9a14 <__aeabi_f2d>
+   d45a8:	a365      	add	r3, pc, #404	; (adr r3, d4740 <loop+0x3d8>)
+   d45aa:	e9d3 2300 	ldrd	r2, r3, [r3]
+   d45ae:	ec41 0b19 	vmov	d9, r0, r1
+   d45b2:	4640      	mov	r0, r8
+   d45b4:	4649      	mov	r1, r9
    d45b6:	f005 fa85 	bl	d9ac4 <__aeabi_dmul>
-   d45ba:	4602      	mov	r2, r0
-   d45bc:	460b      	mov	r3, r1
-   d45be:	4640      	mov	r0, r8
-   d45c0:	4649      	mov	r1, r9
-   d45c2:	f005 f8c7 	bl	d9754 <__aeabi_dsub>
-   d45c6:	eddf 7a75 	vldr	s15, [pc, #468]	; d479c <loop+0x434>
-   d45ca:	ee68 7a27 	vmul.f32	s15, s16, s15
-   d45ce:	4680      	mov	r8, r0
-   d45d0:	ee17 0a90 	vmov	r0, s15
-   d45d4:	4689      	mov	r9, r1
-   d45d6:	f005 fa1d 	bl	d9a14 <__aeabi_f2d>
-   d45da:	4602      	mov	r2, r0
-   d45dc:	460b      	mov	r3, r1
-   d45de:	4640      	mov	r0, r8
-   d45e0:	4649      	mov	r1, r9
-   d45e2:	f005 f8b9 	bl	d9758 <__adddf3>
-   d45e6:	a35a      	add	r3, pc, #360	; (adr r3, d4750 <loop+0x3e8>)
-   d45e8:	e9d3 2300 	ldrd	r2, r3, [r3]
-   d45ec:	f005 f8b4 	bl	d9758 <__adddf3>
-   d45f0:	f005 fd60 	bl	da0b4 <__aeabi_d2f>
-   d45f4:	6038      	str	r0, [r7, #0]
+   d45ba:	ec53 2b19 	vmov	r2, r3, d9
+   d45be:	4680      	mov	r8, r0
+   d45c0:	4689      	mov	r9, r1
+   d45c2:	ee19 0a10 	vmov	r0, s18
+   d45c6:	4619      	mov	r1, r3
+   d45c8:	f005 fa7c 	bl	d9ac4 <__aeabi_dmul>
+   d45cc:	a35e      	add	r3, pc, #376	; (adr r3, d4748 <loop+0x3e0>)
+   d45ce:	e9d3 2300 	ldrd	r2, r3, [r3]
+   d45d2:	f005 fa77 	bl	d9ac4 <__aeabi_dmul>
+   d45d6:	4602      	mov	r2, r0
+   d45d8:	460b      	mov	r3, r1
+   d45da:	4640      	mov	r0, r8
+   d45dc:	4649      	mov	r1, r9
+   d45de:	f005 f8b9 	bl	d9754 <__aeabi_dsub>
+   d45e2:	eddf 7a6e 	vldr	s15, [pc, #440]	; d479c <loop+0x434>
+   d45e6:	ee68 7a27 	vmul.f32	s15, s16, s15
+   d45ea:	4680      	mov	r8, r0
+   d45ec:	ee17 0a90 	vmov	r0, s15
+   d45f0:	4689      	mov	r9, r1
+   d45f2:	f005 fa0f 	bl	d9a14 <__aeabi_f2d>
+   d45f6:	4602      	mov	r2, r0
+   d45f8:	460b      	mov	r3, r1
+   d45fa:	4640      	mov	r0, r8
+   d45fc:	4649      	mov	r1, r9
+   d45fe:	f005 f8ab 	bl	d9758 <__adddf3>
+   d4602:	a353      	add	r3, pc, #332	; (adr r3, d4750 <loop+0x3e8>)
+   d4604:	e9d3 2300 	ldrd	r2, r3, [r3]
+   d4608:	f005 f8a6 	bl	d9758 <__adddf3>
+   d460c:	f005 fd52 	bl	da0b4 <__aeabi_d2f>
+   d4610:	6038      	str	r0, [r7, #0]
     Serial.print(lowpulseoccupancy);
-   d45f6:	f003 f82d 	bl	d7654 <_Z16_fetch_usbserialv>
+   d4612:	f003 f81f 	bl	d7654 <_Z16_fetch_usbserialv>
         return printNumber(val, base) + t;
-   d45fa:	220a      	movs	r2, #10
-   d45fc:	6829      	ldr	r1, [r5, #0]
-   d45fe:	f002 fd20 	bl	d7042 <_ZN5Print11printNumberEmh>
+   d4616:	220a      	movs	r2, #10
+   d4618:	6829      	ldr	r1, [r5, #0]
+   d461a:	f002 fd12 	bl	d7042 <_ZN5Print11printNumberEmh>
     Serial.print(",");
-   d4602:	f003 f827 	bl	d7654 <_Z16_fetch_usbserialv>
-   d4606:	4966      	ldr	r1, [pc, #408]	; (d47a0 <loop+0x438>)
-   d4608:	f002 fcfe 	bl	d7008 <_ZN5Print5printEPKc>
+   d461e:	f003 f819 	bl	d7654 <_Z16_fetch_usbserialv>
+   d4622:	495f      	ldr	r1, [pc, #380]	; (d47a0 <loop+0x438>)
+   d4624:	f002 fcf0 	bl	d7008 <_ZN5Print5printEPKc>
     Serial.print(ratio);
-   d460c:	f003 f822 	bl	d7654 <_Z16_fetch_usbserialv>
-   d4610:	ed96 0a00 	vldr	s0, [r6]
-   d4614:	2102      	movs	r1, #2
-   d4616:	f002 fdfb 	bl	d7210 <_ZN5Print5printEfi>
+   d4628:	f003 f814 	bl	d7654 <_Z16_fetch_usbserialv>
+   d462c:	ed96 0a00 	vldr	s0, [r6]
+   d4630:	2102      	movs	r1, #2
+   d4632:	f002 fded 	bl	d7210 <_ZN5Print5printEfi>
     Serial.print(",");
-   d461a:	f003 f81b 	bl	d7654 <_Z16_fetch_usbserialv>
-   d461e:	4960      	ldr	r1, [pc, #384]	; (d47a0 <loop+0x438>)
-   d4620:	f002 fcf2 	bl	d7008 <_ZN5Print5printEPKc>
+   d4636:	f003 f80d 	bl	d7654 <_Z16_fetch_usbserialv>
+   d463a:	4959      	ldr	r1, [pc, #356]	; (d47a0 <loop+0x438>)
+   d463c:	f002 fce4 	bl	d7008 <_ZN5Print5printEPKc>
     Serial.println(dustConcentration);
-   d4624:	f003 f816 	bl	d7654 <_Z16_fetch_usbserialv>
-   d4628:	ed97 0a00 	vldr	s0, [r7]
-   d462c:	2102      	movs	r1, #2
-   d462e:	f002 fe09 	bl	d7244 <_ZN5Print7printlnEfi>
+   d4640:	f003 f808 	bl	d7654 <_Z16_fetch_usbserialv>
+   d4644:	ed97 0a00 	vldr	s0, [r7]
+   d4648:	2102      	movs	r1, #2
+   d464a:	f002 fdfb 	bl	d7244 <_ZN5Print7printlnEfi>
     lowpulseoccupancy = 0;
-   d4632:	2300      	movs	r3, #0
-   d4634:	602b      	str	r3, [r5, #0]
-   d4636:	f002 f81b 	bl	d6670 <HAL_Timer_Get_Milli_Seconds>
+   d464e:	2300      	movs	r3, #0
+   d4650:	602b      	str	r3, [r5, #0]
+   d4652:	f002 f80d 	bl	d6670 <HAL_Timer_Get_Milli_Seconds>
     starttime = millis();
-   d463a:	f8cb 0000 	str.w	r0, [fp]
-  if (moisturePercent < 20){
-   d463e:	2c13      	cmp	r4, #19
-   d4640:	dc0b      	bgt.n	d465a <loop+0x2f2>
-    digitalWrite(MOISTUREPIN, HIGH);
-   d4642:	2101      	movs	r1, #1
-   d4644:	2013      	movs	r0, #19
-   d4646:	f003 fd1e 	bl	d8086 <digitalWrite>
-    delay(500);
-   d464a:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
-   d464e:	f002 fe6b 	bl	d7328 <delay>
-    digitalWrite(MOISTUREPIN, LOW);
-   d4652:	2100      	movs	r1, #0
-   d4654:	2013      	movs	r0, #19
-   d4656:	f003 fd16 	bl	d8086 <digitalWrite>
+   d4656:	f8cb 0000 	str.w	r0, [fp]
   airQuality=airQualitySensor.slope();
    d465a:	4852      	ldr	r0, [pc, #328]	; (d47a4 <loop+0x43c>)
    d465c:	4d52      	ldr	r5, [pc, #328]	; (d47a8 <loop+0x440>)
@@ -14654,9 +14654,9 @@ TwoWire& __fetch_global_Wire()
    dabcc:	41000a66 51207269 696c6175 203a7974     f..Air Quality: 
    dabdc:	000a6925 74737544 6625203a 73694d00     %i..Dust: %f.Mis
    dabec:	46726574 0078656c 612e6f69 72666164     terFlex.io.adafr
-   dabfc:	2e746975 006d6f63 5f6f6961 62497656     uit.com.aio_VvIb
-   dac0c:	73683534 564b6548 70444b38 454b4f6c     45hsHeKV8KDplOKE
-   dac1c:	7a787939 64776464 73694d00 46726574     9yxzddwd.MisterF
+   dabfc:	2e746975 006d6f63 5f6f6961 7a6c5447     uit.com.aio_GTlz
+   dac0c:	67363239 55777a70 6e754e4b 5a733842     926gpzwUKNunB8sZ
+   dac1c:	56654f53 654d5970 73694d00 46726574     SOeVpYMe.MisterF
    dac2c:	2f78656c 64656566 61572f73 42726574     lex/feeds/WaterB
    dac3c:	6f747475 694d006e 72657473 78656c46     utton.MisterFlex
    dac4c:	6565662f 482f7364 64696d75 00797469     /feeds/Humidity.
